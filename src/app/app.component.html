@@ -1,5 +1,10 @@
 <div class="container">
-  <app-cockpit></app-cockpit>
+  <app-cockpit
+  (serverCreated) = "onServerAdded($event)"
+  (blueprintCreated) = "onBluePrintAdded($event)">
+  <!-- these are our own custom events and we are binding them to the functions we defined in the TS file-->
+  <!-- we shall define these custom events in the cockpit component -->
+  </app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">

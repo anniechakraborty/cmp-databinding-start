@@ -8,7 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ServerElementComponent implements OnInit {
   // we added the @Input() decorator 
   // (which is executed as a function and which we also need to import from angular/core (See above))
-  // to be able to use this property outside of this component (for eg, we will be using it in App Compomenet HTML)
+  // to be able to use this property outside of this component 
+  // (for eg, we will be using it in App Compomenet HTML)
+
+  // @Input('alias') property : type = value;
+  // basically if we want the 'property' to be called by another name when it is accessed by external/parent
+  // components, then we can pass the other name (aka 'alias') as a str param to the Input() decorator 
+  // (like shown in eg above) once you use an alias, you cannot use the org property name
+
   @Input() element : {
     type : string,
     name : string,

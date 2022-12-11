@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+// we need to import EventEmitter from Angular core package
 
 @Component({
   selector: 'app-cockpit',
@@ -6,27 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
+  // properties which will be used for custom event binding in app component html
+  // used eventemitter to turn the properties into events
+  // EventEmitter is a generic type and in between <> we indicate the type of data we are going to emit
+  @Output() serverCreated = new EventEmitter<{serverName : string, serverContent : string}>(); 
+  // since we are emitting a JavaScript object to the AppComponent 
+  @Output() blueprintCreated = new EventEmitter<{serverName : string, serverContent : string}>();
+  // adding () in the end (above) to call the constructor of EventEmitter to create a new EventEmitter object 
+  // which is now stored in serverCreated and blueprintCreated (our custom events)
+
   newServerName = '';
   newServerContent = '';
-  serverElements = [];
+
   constructor() { }
   ngOnInit(): void {
   }
 
   onAddServer() {
-    this.serverElements.push({
-      type: 'server',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
+    this.serverCreated.emit({serverName : this.newServerName, serverContent : this.newServerContent});
   }
 
   onAddBlueprint() {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
+    this.blueprintCreated.emit({serverName : this.newServerName, serverContent : this.newServerContent});
   }
 
 }
