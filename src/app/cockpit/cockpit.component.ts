@@ -1,10 +1,12 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 // we need to import EventEmitter from Angular core package
 
 @Component({
   selector: 'app-cockpit',
   templateUrl: './cockpit.component.html',
-  styleUrls: ['./cockpit.component.css']
+  styleUrls: ['./cockpit.component.css'],
+  // how to over ride view encapsulation in angular
+  // encapsulation : ViewEncapsulation.None
 })
 export class CockpitComponent implements OnInit {
   // properties which will be used for custom event binding in app component html
