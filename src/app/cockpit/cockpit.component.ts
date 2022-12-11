@@ -25,8 +25,10 @@ export class CockpitComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddServer() {
-    this.serverCreated.emit({serverName : this.newServerName, serverContent : this.newServerContent});
+  onAddServer(nameInput) {
+    // console.log(nameInput); // prints the entire tag for which we created the local refrence
+    // console.log(nameInput.value); // prints only the value of the html tag 
+    this.serverCreated.emit({serverName : nameInput.value, serverContent : this.newServerContent});
   }
 
   onAddBlueprint() {

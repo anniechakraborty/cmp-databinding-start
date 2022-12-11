@@ -2,13 +2,21 @@
     <div class="col-xs-12">
       <p>Add new Servers or blueprints!</p>
       <label>Server Name</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerName">
+      <!-- <input type="text" class="form-control" [(ngModel)]="newServerName"> -->
+      <!-- using local reference and removing the two way binding (ngmodel) from here -->
+      <input 
+      type="text" 
+      class="form-control" 
+      #serverNameInput>
+
       <label>Server Content</label>
       <input type="text" class="form-control" [(ngModel)]="newServerContent">
       <br>
       <button
         class="btn btn-primary"
-        (click)="onAddServer()">Add Server</button>
+        (click)="onAddServer(serverNameInput)">Add Server</button>
+        <!-- thing to note : you can use your local reference everywhere in your template 
+        but not inside the typescript code. so we are passing the entire local reference as the function parm -->
       <button
         class="btn btn-primary"
         (click)="onAddBlueprint()">Add Server Blueprint</button>
