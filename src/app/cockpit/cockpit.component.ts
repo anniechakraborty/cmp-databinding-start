@@ -18,21 +18,21 @@ export class CockpitComponent implements OnInit {
   // adding () in the end (above) to call the constructor of EventEmitter to create a new EventEmitter object 
   // which is now stored in serverCreated and blueprintCreated (our custom events)
 
-  newServerName = '';
+  // newServerName = ''; commenting since we are using local refernce now
   newServerContent = '';
 
   constructor() { }
   ngOnInit(): void {
   }
 
-  onAddServer(nameInput) {
+  onAddServer(nameInput : HTMLInputElement) {
     // console.log(nameInput); // prints the entire tag for which we created the local refrence
     // console.log(nameInput.value); // prints only the value of the html tag 
     this.serverCreated.emit({serverName : nameInput.value, serverContent : this.newServerContent});
   }
 
-  onAddBlueprint() {
-    this.blueprintCreated.emit({serverName : this.newServerName, serverContent : this.newServerContent});
+  onAddBlueprint(nameInput : HTMLInputElement) {
+    this.blueprintCreated.emit({serverName : nameInput.value, serverContent : this.newServerContent});
   }
 
 }
