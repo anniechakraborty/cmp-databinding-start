@@ -28,4 +28,14 @@ export class AppComponent {
       content: blueprintData.serverContent
     });
   }
+
+  onChnagedName(){
+    // changing the name of the first element to see how ngOnChanges is working
+    this.serverElements[0].name = 'changed';
+  }
+
+  onDestroyComponent(){
+    // removing the first element to see how ondestroy works
+    this.serverElements.splice(0,1);
+  }
 }

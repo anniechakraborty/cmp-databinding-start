@@ -6,11 +6,15 @@
   <!-- we shall define these custom events in the cockpit component -->
   </app-cockpit>
   <hr>
+  <button class="btn btn-primary" (click)="onChnagedName()">Changed name</button>
+  <button class="btn btn-danger" (click)="onDestroyComponent()">Destroy!</button>
   <div class="row">
     <div class="col-xs-12">
       <app-server-element 
       *ngFor="let serverElement of serverElements" 
-      [element] = "serverElement"> 
+      [element] = "serverElement"
+      [name] = "serverElement.name"
+      > 
       <!-- we are actually trying to access the element proprty (the JavaScript object which we have defined) 
           we have defined in the server-element.components.ts file
 

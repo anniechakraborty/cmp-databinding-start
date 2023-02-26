@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewEncapsulation, ViewChild , ElementRef} from '@angular/core';
 // we need to import EventEmitter from Angular core package
 
 @Component({
@@ -19,20 +19,26 @@ export class CockpitComponent implements OnInit {
   // which is now stored in serverCreated and blueprintCreated (our custom events)
 
   // newServerName = ''; commenting since we are using local refernce now
-  newServerContent = '';
-
+  // newServerContent = '';
+  @ViewChild('serverContentInput') serverContentInput : ElementRef;
+ 
   constructor() { }
   ngOnInit(): void {
   }
 
   onAddServer(nameInput : HTMLInputElement) {
+    // local  ref  example
     // console.log(nameInput); // prints the entire tag for which we created the local refrence
     // console.log(nameInput.value); // prints only the value of the html tag 
-    this.serverCreated.emit({serverName : nameInput.value, serverContent : this.newServerContent});
+
+    // view child example
+    console.log(this.serverContentInput);
+    console.log(this.serverContentInput.nativeElement.value);
+    this.serverCreated.emit({serverName : nameInput.value, serverContent : this.serverContentInput.nativeElement.value});
   }
 
   onAddBlueprint(nameInput : HTMLInputElement) {
-    this.blueprintCreated.emit({serverName : nameInput.value, serverContent : this.newServerContent});
+    this.blueprintCreated.emit({serverName : nameInput.value, serverContent : this.serverContentInput.nativeElement.value});
   }
 
 }
